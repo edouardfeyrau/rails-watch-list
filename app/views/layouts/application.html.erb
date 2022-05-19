@@ -11,6 +11,15 @@
   </head>
 
   <body>
+  <div class="navbar-lewagon">
+    <div class="navbar-brand img">
+      <%= link_to lists_path do %> <%= image_tag "popcorn.jpeg", alt:"popcorn", width:"50" %> <% end %>
+    </div>
+    <div class="navbar-collapse">
+      <%= link_to "My lists", lists_path %>
+      <%= link_to "New list", new_list_path %>
+    </div>
+  </div>
     <%= yield %>
   </body>
 </html>

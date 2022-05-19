@@ -1,0 +1,25 @@
+
+
+<div class="banner lists-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://chloejohnston.com/wp-content/uploads/2015/01/paris-cin%C3%A9ma1.jpg')">
+  <div class="container">
+    <h1><%= @list.name %></h1>
+  </div>
+  <button class="btn btn-warning"><%= @bookmarks.count %> <%= @bookmarks.count > 1 ? "Movies": "Movie" %></button>
+</div>
+
+<div class="cards">
+  <% @bookmarks.each do |bookmark|%>
+    <div class="card-category">
+      <div class="top" style="background-image: url('<%=bookmark.movie.poster_url%>')">
+      </div>
+      <div class="card-text">
+        <p><strong><%= bookmark.movie.title %></strong> * <%= bookmark.movie.rating %> <i class="fa-solid fa-star" style="color:yellow;"></i></p>
+        <div class="comment">
+          <p><i class="fa-solid fa-quote-left" style="color:black"></i> <%= bookmark.comment %></p>
+          <p><%= link_to "delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"} %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<button class="btn btn-success"><%= link_to new_list_bookmark_path(@list) do%>Create a new bookmark<% end %> </button>
